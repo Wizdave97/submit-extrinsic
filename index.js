@@ -28,7 +28,7 @@ async function main() {
   // Create root key
   const root = keyring.addFromUri("");
 
-  const remarkCall = await api.tx.system.remark({bytes: []}).signAndSend(root, ({ events = [], status }) => {
+  const unsub = await api.tx.system.remark({bytes: []}).signAndSend(root, ({ events = [], status }) => {
     console.log(`Current status is: ${status.type}`);
 
     if (status.isFinalized) {
